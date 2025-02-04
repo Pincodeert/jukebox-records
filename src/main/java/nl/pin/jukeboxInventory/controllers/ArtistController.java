@@ -1,6 +1,7 @@
 package nl.pin.jukeboxInventory.controllers;
 
 import nl.pin.jukeboxInventory.models.Artist;
+import nl.pin.jukeboxInventory.services.ArtistService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,11 @@ import java.util.List;
 @RestController
 public class ArtistController {
 
+    private final ArtistService artistService;
+
+    public ArtistController(ArtistService artistService) {
+        this.artistService = artistService;
+    }
 
     @GetMapping("/artists")
     public ResponseEntity<List<Artist>> getAllArtists() {

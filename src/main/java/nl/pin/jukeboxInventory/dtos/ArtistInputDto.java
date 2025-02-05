@@ -1,14 +1,6 @@
-package nl.pin.jukeboxInventory.models;
+package nl.pin.jukeboxInventory.dtos;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "artists")
-public class Artist {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ArtistInputDto {
 
     private String firstName;
 
@@ -22,25 +14,21 @@ public class Artist {
     private String tracks;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
     }
 
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+
     public String getLastName() {
         return lastName;
     }
+
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -59,16 +47,19 @@ public class Artist {
         return records;
     }
 
+
     public void setRecords(String records) {
         this.records = records;
     }
+
 
     public String getTracks() {
         return tracks;
     }
 
+
     public void setTracks(String tracks) {
-       this.tracks = tracks;
+        this.tracks = tracks;
     }
 
 }

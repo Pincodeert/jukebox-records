@@ -1,13 +1,7 @@
-package nl.pin.jukeboxInventory.models;
+package nl.pin.jukeboxInventory.dtos;
 
-import jakarta.persistence.*;
+public class ArtistDto {
 
-@Entity
-@Table(name = "artists")
-public class Artist {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String firstName;
@@ -68,7 +62,7 @@ public class Artist {
     }
 
     public void setTracks(String tracks) {
-       this.tracks = tracks;
+        this.tracks = tracks;
     }
 
 }

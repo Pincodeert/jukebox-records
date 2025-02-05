@@ -1,10 +1,12 @@
 package nl.pin.jukeboxInventory.services;
 
+import nl.pin.jukeboxInventory.dtos.ArtistDto;
 import nl.pin.jukeboxInventory.exceptions.RecordNotFoundException;
 import nl.pin.jukeboxInventory.models.Artist;
 import nl.pin.jukeboxInventory.repositories.ArtistRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,19 +19,37 @@ public class ArtistService {
         this.artistRepository = artistRepository;
     }
 
-    public List<Artist> getAllArtists() {
+    public List<ArtistDto> getAllArtists() {
         List<Artist> artists = artistRepository.findAll();
-        return artists;
+        List<ArtistDto> dtos = new ArrayList<>();
+
+        for (Artist a:artists
+             ) {
+            ArtistDto dto = transferToDto(a);
+            dtos.add(dto);
+        }
+        return dtos;
     }
 
-    public Artist getArtistById(Long id) {
+    public ArtistDto getArtistById(Long id) {
         Optional<Artist> artist = artistRepository.findById(id);
 
         if(artist.isPresent()) {
-            return artist.get();
+            ArtistDto dto = transferToDto(artist.get());
+            return dto;
         } else {
             throw new RecordNotFoundException("this ID does not exist");
         }
+    }
+
+    public ArtistDto transferToDto(Artist artist) {
+        ArtistDto dto = new ArtistDto();
+
+        dto.setId(artist.getId());
+        dto.setFirstName(artist.getFirstName());
+        dto.setLastName(artist.getLastName());
+
+        return dto;
     }
 
 }

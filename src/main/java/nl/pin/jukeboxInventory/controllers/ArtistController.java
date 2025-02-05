@@ -1,5 +1,6 @@
 package nl.pin.jukeboxInventory.controllers;
 
+import nl.pin.jukeboxInventory.dtos.ArtistDto;
 import nl.pin.jukeboxInventory.models.Artist;
 import nl.pin.jukeboxInventory.services.ArtistService;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,14 @@ public class ArtistController {
     }
 
     @GetMapping("/artists")
-    public ResponseEntity<List<Artist>> getAllArtists() {
-        List<Artist> artists = artistService.getAllArtists();
+    public ResponseEntity<List<ArtistDto>> getAllArtists() {
+        List<ArtistDto> artists = artistService.getAllArtists();
         return ResponseEntity.ok(artists);
     }
 
     @GetMapping("/artists/{id}")
-    public ResponseEntity<Artist> getArtistById(@PathVariable Long id) {
-        Artist artist = artistService.getArtistById(id);
-        return ResponseEntity.ok(artist);
+    public ResponseEntity<ArtistDto> getArtistById(@PathVariable Long id) {
+        ArtistDto artistDto = artistService.getArtistById(id);
+        return ResponseEntity.ok(artistDto);
     }
 }

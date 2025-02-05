@@ -1,5 +1,6 @@
 package nl.pin.jukeboxInventory.controllers;
 
+import nl.pin.jukeboxInventory.dtos.TrackDto;
 import nl.pin.jukeboxInventory.models.Track;
 import nl.pin.jukeboxInventory.services.TrackService;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +20,14 @@ public class TrackController {
     }
 
     @GetMapping("/tracks")
-    public ResponseEntity<List<Track>> getAllTracks() {
-        List<Track> tracks = trackService.getAllTracks();
-        return ResponseEntity.ok(tracks);
+    public ResponseEntity<List<TrackDto>> getAllTracks() {
+        List<TrackDto> trackDtos = trackService.getAllTracks();
+        return ResponseEntity.ok(trackDtos);
     }
 
     @GetMapping("/tracks/{id}")
-    public ResponseEntity<Track> getTrackById(@PathVariable Long id) {
-        Track track = trackService.getTrackById(id);
-        return ResponseEntity.ok(track);
+    public ResponseEntity<TrackDto> getTrackById(@PathVariable Long id) {
+        TrackDto trackDto = trackService.getTrackById(id);
+        return ResponseEntity.ok(trackDto);
     }
 }

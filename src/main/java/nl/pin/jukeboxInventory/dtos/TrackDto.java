@@ -1,13 +1,7 @@
-package nl.pin.jukeboxInventory.models;
+package nl.pin.jukeboxInventory.dtos;
 
-import jakarta.persistence.*;
+public class TrackDto {
 
-@Entity
-@Table(name = "tracks")
-public class Track {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;

@@ -1,13 +1,7 @@
-package nl.pin.jukeboxInventory.models;
+package nl.pin.jukeboxInventory.dtos;
 
-import jakarta.persistence.*;
+public class RecordDto {
 
-@Entity
-@Table(name = "records")
-public class Record {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String artist;
@@ -21,8 +15,6 @@ public class Record {
     private String remark;
 
     private String condition;
-
-
 
     public Long getId() {
         return id;
